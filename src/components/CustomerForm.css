@@ -1,0 +1,36 @@
+.customer-form {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.customer-form__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: #1a1a2e;  
+}
+
+.customer-form__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.customer-form__field {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+  color: #333333;
+  gap: 0.3rem;
+}
+
+.customer-form__field input,
+.customer-form__field select {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
