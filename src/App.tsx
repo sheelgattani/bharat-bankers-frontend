@@ -1,12 +1,16 @@
 import Navbar from "./components/Navbar";
 import CustomerForm from "./components/CustomerForm";
+import LoanForm from "./components/LoanForm";
 import "./App.css";
 
 function App() {
   return (
     <>
       <Navbar />
-      <CustomerForm />
+      <main className="app__main">
+        <CustomerForm />
+        <LoanForm />
+      </main>
     </>
   );
 }
