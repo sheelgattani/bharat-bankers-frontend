@@ -16,3 +16,11 @@ export type Customer = {
 };
 
 //#some types are string for now because they will be converted to number during API integration to avoid any bugs
+
+// New — describes what props CustomerForm accepts
+export type CustomerFormProps = {
+  customer: Customer;
+  onChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
+};

@@ -8,3 +8,11 @@ export type Loan = {
 
 //#Same reasoning as Customer.ts — amount and propertyValue are string because <input> always gives us strings, 
 // and we convert to number only at API send time.
+
+// New
+export type LoanFormProps = {
+  loan: Loan;
+  onChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
+};

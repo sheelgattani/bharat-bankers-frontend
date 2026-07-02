@@ -1,24 +1,8 @@
-import { useState } from "react";
-import type { Loan, LoanType } from "../types/Loan";
+import type { Loan, LoanType, LoanFormProps } from "../types/Loan";
 import { LOAN_TYPE_OPTIONS, PROPERTY_LOAN_TYPES } from "../constants/LoanFormConst";
 import "./LoanForm.css";
 
-const initialLoan: Loan = {
-  loanType: "",
-  amount: "",
-  propertyValue: "",
-};
-
-function LoanForm() {
-  const [loan, setLoan] = useState<Loan>(initialLoan);
-
-  function handleChange(
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) {
-    const { name, value } = event.target;
-    setLoan((prev) => ({ ...prev, [name]: value }));
-  }
-
+function LoanForm({ loan, onChange }: LoanFormProps) {
   const requiresPropertyValue =
     loan.loanType !== "" &&
     PROPERTY_LOAN_TYPES.includes(loan.loanType as LoanType);
@@ -33,7 +17,7 @@ function LoanForm() {
           <select
             name="loanType"
             value={loan.loanType}
-            onChange={handleChange}
+            onChange={onChange}
           >
             <option value="">Select...</option>
             {LOAN_TYPE_OPTIONS.map((option) => (
@@ -50,7 +34,7 @@ function LoanForm() {
             type="number"
             name="amount"
             value={loan.amount}
-            onChange={handleChange}
+            onChange={onChange}
           />
         </label>
 
@@ -61,7 +45,7 @@ function LoanForm() {
               type="number"
               name="propertyValue"
               value={loan.propertyValue}
-              onChange={handleChange}
+              onChange={onChange}
             />
           </label>
         )}
@@ -72,4 +56,4 @@ function LoanForm() {
 
 export default LoanForm;
 
-//#
+//# LoanForm is now purely a display component driven by props from App.tsx

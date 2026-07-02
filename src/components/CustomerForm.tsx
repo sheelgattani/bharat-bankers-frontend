@@ -1,33 +1,8 @@
-import { useState } from "react";
-import type { Customer } from "../types/Customer";
+import type { CustomerFormProps } from "../types/Customer";
 import { EMPLOYMENT_TYPE_OPTIONS } from "../constants/CustomerFormConst";
 import "./CustomerForm.css";
 
-const initialCustomer: Customer = {
-  name: "",
-  contactNumber: "",
-  email: "",
-  age: "",
-  dob: "",
-  employmentType: "",
-  employer: "",
-  netMonthlyIncome: "",
-  annualGrossIncome: "",
-  cibilScore: "",
-  panNumber: "",
-  aadharNumber: "",
-};
-
-function CustomerForm() {
-  const [customer, setCustomer] = useState<Customer>(initialCustomer);
-
-  function handleChange(
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) {
-    const { name, value } = event.target;
-    setCustomer((prev) => ({ ...prev, [name]: value }));
-  }
-
+function CustomerForm({ customer, onChange }: CustomerFormProps) {
   return (
     <div className="customer-form">
       <h2 className="customer-form__title">Customer Details</h2>
@@ -39,7 +14,7 @@ function CustomerForm() {
             type="text"
             name="name"
             value={customer.name}
-            onChange={handleChange}
+            onChange={onChange}
           />
         </label>
 
@@ -49,7 +24,7 @@ function CustomerForm() {
             type="tel"
             name="contactNumber"
             value={customer.contactNumber}
-            onChange={handleChange}
+            onChange={onChange}
           />
         </label>
 
@@ -59,7 +34,7 @@ function CustomerForm() {
             type="email"
             name="email"
             value={customer.email}
-            onChange={handleChange}
+            onChange={onChange}
           />
         </label>
 
@@ -69,7 +44,7 @@ function CustomerForm() {
             type="number"
             name="age"
             value={customer.age}
-            onChange={handleChange}
+            onChange={onChange}
           />
         </label>
 
@@ -79,7 +54,7 @@ function CustomerForm() {
             type="date"
             name="dob"
             value={customer.dob}
-            onChange={handleChange}
+            onChange={onChange}
           />
         </label>
 
@@ -88,7 +63,7 @@ function CustomerForm() {
           <select
             name="employmentType"
             value={customer.employmentType}
-            onChange={handleChange}
+            onChange={onChange}
           >
             <option value="">Select...</option>
             {EMPLOYMENT_TYPE_OPTIONS.map((option) => (
@@ -105,7 +80,7 @@ function CustomerForm() {
             type="text"
             name="employer"
             value={customer.employer}
-            onChange={handleChange}
+            onChange={onChange}
           />
         </label>
 
@@ -115,7 +90,7 @@ function CustomerForm() {
             type="number"
             name="netMonthlyIncome"
             value={customer.netMonthlyIncome}
-            onChange={handleChange}
+            onChange={onChange}
           />
         </label>
 
@@ -125,7 +100,7 @@ function CustomerForm() {
             type="number"
             name="annualGrossIncome"
             value={customer.annualGrossIncome}
-            onChange={handleChange}
+            onChange={onChange}
           />
         </label>
 
@@ -135,7 +110,7 @@ function CustomerForm() {
             type="number"
             name="cibilScore"
             value={customer.cibilScore}
-            onChange={handleChange}
+            onChange={onChange}
           />
         </label>
 
@@ -145,7 +120,7 @@ function CustomerForm() {
             type="text"
             name="panNumber"
             value={customer.panNumber}
-            onChange={handleChange}
+            onChange={onChange}
           />
         </label>
 
@@ -155,7 +130,7 @@ function CustomerForm() {
             type="text"
             name="aadharNumber"
             value={customer.aadharNumber}
-            onChange={handleChange}
+            onChange={onChange}
           />
         </label>
       </div>
@@ -165,9 +140,5 @@ function CustomerForm() {
 
 export default CustomerForm;
 
-
-//# Why every input has both value={customer.fieldName} and onChange={handleChange}? 
-// This is called a controlled component — a core React concept. 
-// The input's displayed value is driven by React state, not by the browser's own internal input memory. 
-// When you type a letter, it doesn't appear because the browser remembers it — it appears because: you type → onChange fires → handleChange updates state → React re-renders the input with the new value. 
-// This round-trip is what makes React "the source of truth" for form data, which matters a lot once we need to send this data to your backend or reset the form.
+//#The component is now purely a display component that receives everything it needs from its parent. 
+// This is called a controlled component driven by props — the component has no memory of its own.
