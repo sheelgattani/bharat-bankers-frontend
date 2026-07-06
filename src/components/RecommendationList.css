@@ -1,0 +1,19 @@
+.recommendation-list {
+  margin-top: 0.5rem;
+}
+
+.recommendation-list__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: #1a1a2e;
+}
+
+.recommendation-list--empty {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: #666666;
+  font-size: 0.9rem;
+}

@@ -2,8 +2,11 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import CustomerForm from "./components/CustomerForm";
 import LoanForm from "./components/LoanForm";
+import RecommendationList from "./components/RecommendationList";
 import type { Customer } from "./types/Customer";
 import type { Loan } from "./types/Loan";
+import type { Recommendation } from "./types/Recommendation";
+import { generateMockRecommendations } from "./utils/generateMockRecommendations";
 import "./App.css";
 
 const initialCustomer: Customer = {
@@ -30,6 +33,9 @@ const initialLoan: Loan = {
 function App() {
   const [customer, setCustomer] = useState<Customer>(initialCustomer);
   const [loan, setLoan] = useState<Loan>(initialLoan);
+  const [recommendations, setRecommendations] = useState<
+    Recommendation[] | null
+  >(null);
 
   function handleCustomerChange(
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -46,8 +52,7 @@ function App() {
   }
 
   function handleSubmit() {
-    console.log("Customer:", customer);
-    console.log("Loan:", loan);
+    setRecommendations(generateMockRecommendations(customer, loan));
   }
 
   return (
@@ -68,6 +73,7 @@ function App() {
         >
           Get Recommendations
         </button>
+        <RecommendationList recommendations={recommendations} />
       </main>
     </>
   );
