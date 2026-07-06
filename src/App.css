@@ -19,3 +19,18 @@
 .app__submit:hover {
   background-color: #2a2a4e;
 }
+
+.app__submit:disabled {
+  background-color: #6b6b8a;
+  cursor: not-allowed;
+}
+
+.app__error {
+  color: #b3261e;
+  background-color: #fdecea;
+  border: 1px solid #f5c2bc;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin: -1rem 0 1.5rem;
+  font-size: 0.9rem;
+}

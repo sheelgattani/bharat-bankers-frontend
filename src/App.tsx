@@ -6,7 +6,7 @@ import RecommendationList from "./components/RecommendationList";
 import type { Customer } from "./types/Customer";
 import type { Loan } from "./types/Loan";
 import type { Recommendation } from "./types/Recommendation";
-import { generateMockRecommendations } from "./utils/generateMockRecommendations";
+import { fetchRecommendations } from "./services/recommendationsApi";
 import "./App.css";
 
 const initialCustomer: Customer = {
@@ -27,6 +27,7 @@ const initialCustomer: Customer = {
 const initialLoan: Loan = {
   loanType: "",
   amount: "",
+  tenureMonths: "",
   propertyValue: "",
 };
 
@@ -36,6 +37,8 @@ function App() {
   const [recommendations, setRecommendations] = useState<
     Recommendation[] | null
   >(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   function handleCustomerChange(
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -51,8 +54,19 @@ function App() {
     setLoan((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit() {
-    setRecommendations(generateMockRecommendations(customer, loan));
+  async function handleSubmit() {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const result = await fetchRecommendations(customer, loan);
+      setRecommendations(result);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+      setRecommendations(null);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -70,9 +84,11 @@ function App() {
         <button
           className="app__submit"
           onClick={handleSubmit}
+          disabled={isLoading}
         >
-          Get Recommendations
+          {isLoading ? "Loading..." : "Get Recommendations"}
         </button>
+        {error && <p className="app__error">{error}</p>}
         <RecommendationList recommendations={recommendations} />
       </main>
     </>

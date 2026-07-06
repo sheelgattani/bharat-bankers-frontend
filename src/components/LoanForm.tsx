@@ -38,6 +38,16 @@ function LoanForm({ loan, onChange }: LoanFormProps) {
           />
         </label>
 
+        <label className="loan-form__field">
+          Loan Tenure (months)
+          <input
+            type="number"
+            name="tenureMonths"
+            value={loan.tenureMonths}
+            onChange={onChange}
+          />
+        </label>
+
         {requiresPropertyValue && (
           <label className="loan-form__field">
             Property Value (₹)

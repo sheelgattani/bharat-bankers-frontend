@@ -3,6 +3,7 @@ export type LoanType = "home" | "lap" | "personal";
 export type Loan = {
   loanType: LoanType | "";
   amount: string;
+  tenureMonths: string;
   propertyValue: string;
 };
 
