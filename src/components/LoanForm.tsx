@@ -67,3 +67,5 @@ function LoanForm({ loan, onChange }: LoanFormProps) {
 export default LoanForm;
 
 //# LoanForm is now purely a display component driven by props from App.tsx
+// same pattern as customer form for the most part
+// requiresPropertyValue is to check whether the the type of loan requires property value, its a derived value

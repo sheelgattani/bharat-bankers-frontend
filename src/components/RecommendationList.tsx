@@ -27,3 +27,6 @@ function RecommendationList({ recommendations }: RecommendationListProps) {
 }
 
 export default RecommendationList;
+
+//# returns the list of recommendation cards
+

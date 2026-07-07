@@ -7,6 +7,8 @@ export type Recommendation = {
   estimatedInterestRate: number | null;
 };
 
+//#rank is number because this data comes out of fetch()
+
 export type RecommendationCardProps = {
   recommendation: Recommendation;
 };

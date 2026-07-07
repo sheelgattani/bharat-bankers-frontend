@@ -22,3 +22,7 @@ function RecommendationCard({ recommendation }: RecommendationCardProps) {
 }
 
 export default RecommendationCard;
+
+//#pure display, no interactivity
+// rateLabel is derived and the interest rate is fixed to decimal places
+// function returns the card with all the details

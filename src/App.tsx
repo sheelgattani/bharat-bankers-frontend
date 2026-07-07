@@ -103,3 +103,7 @@ export default App;
 // The button's job is to submit both forms' data together — so it belongs to the component that owns both, which is App.tsx.
 //  If it lived inside CustomerForm, it would have no access to loan data. 
 // If it lived inside LoanForm, it would have no access to customer data.
+
+// five usestate calls , customer and loan are read together, the other 3 are independent of each other
+// handleCustomerChange / handleLoanChange functions deal with customer form and loan form
+// handleSubmit deals with fetching and setting recommendations

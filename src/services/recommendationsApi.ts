@@ -67,3 +67,6 @@ export async function fetchRecommendations(
     estimatedInterestRate: item.estimated_interest_rate,
   }));
 }
+
+//#contains fetchRecommendations function which is used in App.tsx
+

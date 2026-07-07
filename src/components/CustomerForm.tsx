@@ -142,3 +142,8 @@ export default CustomerForm;
 
 //#The component is now purely a display component that receives everything it needs from its parent. 
 // This is called a controlled component driven by props — the component has no memory of its own.
+
+//12 fields of one repeated pattern, 
+// 1) every name attribute matches a key on the customer type
+// 2) type also varies per field, they just change which keyboard is displayed
+// 3) employmentType is a select instead of an input.
